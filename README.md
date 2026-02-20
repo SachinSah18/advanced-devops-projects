@@ -1,1 +1,1 @@
-# advanced-devops-projects
+# Advanced DevOps Projects
