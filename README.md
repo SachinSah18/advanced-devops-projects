@@ -84,4 +84,4 @@ Environment Variables: Initially, the database didn't pick up the .env variables
 
 Resource Cleanup: Used docker system prune -af to clear unused images and build cache, keeping the disk space optimized.
 
-url http://localhost:8080/
+url http: localhost:8080
