@@ -1,4 +1,3 @@
-cat <<EOF > index.html
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,15 +20,19 @@ cat <<EOF > index.html
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
             const status = document.getElementById('status');
-            const res = await fetch('/api/contact', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ name, email, message })
-            });
-            const data = await res.json();
-            status.innerText = data.msg;
+            try {
+                const res = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ name, email, message })
+                });
+                const data = await res.json();
+                status.textContent = data.msg || 'Response received';
+            } catch (err) {
+                status.textContent = 'Error sending message';
+                console.error(err);
+            }
         }
     </script>
 </body>
 </html>
-EOF
